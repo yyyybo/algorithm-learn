@@ -129,8 +129,38 @@ public class Array {
         return value[p.length()][s.length()];
     }
 
+//    public static int climbStairs(int n) {
+//        if(n < 2){
+//            return 1;
+//        }
+//        int a = 1 , b = 1 , c = 0;
+//        for(int i = 2; i <= n ; i ++){
+//            c = a + b ;
+//            a = b;
+//            b = c;
+//        }
+//        return c;
+//    }
+
+    public static int climbStairs(int n) {
+        return climb(0, n);
+    }
+    public static int climb(int i, int n) {
+        if (i > n) {
+            return 0;
+        }
+        if (i == n) {
+            return 1;
+        }
+
+        int i1 = climb(i + 1, n);
+        int i2 = climb(i + 2, n);
+
+        return  i1 + i2;
+    }
+
     public static void main(String[] args) {
 
-        System.out.println(isMatch("cb", "?a"));
+        System.out.println(climbStairs(3));
     }
 }
